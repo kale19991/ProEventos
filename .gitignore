@@ -17,6 +17,7 @@
 mono_crash.*
 
 # Build results
+Back/src/ProEventos.API/Migrations
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -187,6 +188,7 @@ publish/
 *.azurePubxml
 # Note: Comment the next line if you want to checkin your web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted
+*.db
 *.pubxml
 *.publishproj
 
