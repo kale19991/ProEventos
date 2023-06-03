@@ -28,6 +28,13 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
+        },
+        {
+            "name": "ng serve",
+            "type": "chrome",
+            "request": "launch",            
+            "webRoot": "${workspaceFolder}/Front/ProEventos-App",
+            "url": "http://localhost:4200/",            
         }
     ]
 }
