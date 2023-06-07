@@ -37,5 +37,28 @@ namespace ProEventos.API.Controllers
                     sucesso = true
                 });
         }
+        [HttpPut("{id:int}")]
+        public IActionResult Put(int id)
+        {
+            return Ok(
+                new 
+                { 
+                    data = _context.Eventos.Where(x => x.EventoId == id), 
+                    sucesso = true
+                });
+        }
+        [HttpPost()]
+        public IActionResult Post(Evento model)
+        {
+            _context.Eventos.Add(model);
+            _context.SaveChanges();
+
+            return Ok(
+                new 
+                { 
+                    data = model, 
+                    sucesso = true
+                });
+        }
     }
 }
