@@ -24,18 +24,13 @@ namespace ProEventos.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(new { data = _context.Eventos, sucesso = true});
+            return Ok(_context.Eventos);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            return Ok(
-                new 
-                { 
-                    data = _context.Eventos.Where(x => x.EventoId == id), 
-                    sucesso = true
-                });
+            return Ok(_context.Eventos.Where(x => x.EventoId == id));
         }
         [HttpPut("{id:int}")]
         public IActionResult Put(int id)

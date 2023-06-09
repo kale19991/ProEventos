@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
   isCollapsed = true;
+  public menuItems = [
+    {
+      label: 'Eventos',
+      link: ''
+    }
+  ]
 }
