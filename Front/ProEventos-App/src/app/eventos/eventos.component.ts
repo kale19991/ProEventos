@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventosComponent implements OnInit {
   public eventos: any = [];
+  public larguraImagem: number = 150;
+  public margemImagem: number = 2;
+  public mostraImagem: boolean = true;
   /**
    *
    */
@@ -20,25 +23,15 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos(): void {
-    // this.eventos =
-    // [
-    //   {
-    //     Tema: 'Angular',
-    //     Local: 'Belo Horizonte'
-    //   },
-    //   {
-    //     Tema: '.NET 5',
-    //     Local: 'São Paulo'
-    //   },
-    //   {
-    //     Tema: 'Angular e Suas Novidades',
-    //     Local: 'Rido de Janeiro'
-    //   }
-    // ]
     this.http.get('https://localhost:5001/api/evento').subscribe(
       response => this.eventos = response,
       error => console.log(error)
     );
+  }
+
+  public mostrarImg()
+  {
+    this.mostraImagem = !this.mostraImagem
   }
 
 }
