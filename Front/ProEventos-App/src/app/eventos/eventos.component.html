@@ -1,19 +1,21 @@
 <h2>Eventos</h2>
 <hr>
 
-<form action="post" class="form-inline">
+<div class="form-inline">
   <div class="form-group mb-2">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Buscar eventos pelo tema" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="text" class="form-control" placeholder="Buscar eventos pelo tema" aria-label="Recipient's username" aria-describedby="button-addon2"
+      [(ngModel)]="filtroLista">
       <button class="btn btn-outline-success" type="button" id="button-addon2">Buscar</button>
     </div>
+    <h3>Filtro: {{filtroLista}}</h3>
   </div>
-</form>
+</div>
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-      <th>#</th>
       <th><button class="btn btn-outline-light btn-sm" (click)="mostrarImg()">{{mostraImagem ? 'Ocultar': 'Exibir'}}</button></th>
+      <th>#</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
@@ -22,15 +24,15 @@
       <th>Opções</th>
     </tr>
   </thead>
-  <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
-      <td>{{evento.eventoId}}</td>
+  <tbody *ngIf="eventos && eventosFiltrado.length">
+    <tr *ngFor="let evento of eventosFiltrado">
       <td>
         <img [collapse]="!mostraImagem" [isAnimated]="true"
         src="assets/{{evento.imagemUrl}}"
         [style.width.px]="larguraImagem"
         [style.margin.px]="margemImagem">
       </td>
+      <td>{{evento.eventoId}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
       <td>{{evento.data}}</td>
@@ -39,7 +41,7 @@
       <td></td>
     </tr>
   </tbody>
-  <tfoot *ngIf="!eventos.length">
+  <tfoot *ngIf="!eventosFiltrado.length">
     <tr>
       <td class="text-center" colspan="8">
         <h4>Nenhum evento encontrado</h4>
