@@ -2,10 +2,10 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProEventos.API.Models;
 using System.Collections.Generic;
 using System.Linq;
-using ProEventos.API.Data;
+using ProEventos.Persistence;
+using ProEventos.Domain.Entities;
 
 namespace ProEventos.API.Controllers
 {
@@ -30,7 +30,7 @@ namespace ProEventos.API.Controllers
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            return Ok(_context.Eventos.Where(x => x.EventoId == id));
+            return Ok(_context.Eventos.Where(x => x.Id == id));
         }
         [HttpPut("{id:int}")]
         public IActionResult Put(int id)
@@ -38,7 +38,7 @@ namespace ProEventos.API.Controllers
             return Ok(
                 new 
                 { 
-                    data = _context.Eventos.Where(x => x.EventoId == id), 
+                    data = _context.Eventos.Where(x => x.Id == id), 
                     sucesso = true
                 });
         }
