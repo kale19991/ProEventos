@@ -14,6 +14,13 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Persistence;
+using ProEventos.Persistence.Contexts;
+using ProEventos.Persistence.Interfaces;
+using ProEventos.Application.Interfaces;
+using ProEventos.Application;
+using Microsoft.AspNetCore.Identity;
+using FluentValidation;
+using ProEventos.Domain.Validations;
 
 namespace ProEventos.API
 {
@@ -33,6 +40,12 @@ namespace ProEventos.API
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
             services.AddControllers();
+            services.AddValidatorsFromAssemblyContaining<EventoValidation>();
+            services.AddScoped<IEventoService, EventoService>();
+
+            services.AddScoped<IEventoPersistence, EventoPersistence>();
+            services.AddScoped<IPalestrantePersistence, PalestrantePersistence>();
+
             services.AddCors();
             services.AddSwaggerGen(c =>
             {

@@ -6,54 +6,45 @@ using System.Collections.Generic;
 using System.Linq;
 using ProEventos.Persistence;
 using ProEventos.Domain.Entities;
+using ProEventos.Application.Interfaces;
 
 namespace ProEventos.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class EventoController : ControllerBase
+    public class EventoController : BaseController
     {
-        private readonly ILogger<Evento> _logger;
-        private readonly DataContext _context;
-        public EventoController(ILogger<Evento> logger, DataContext context)
+        private readonly IEventoService _service;
+        public EventoController(ILogger<EventoController> logger, IEventoService service) : base(logger)
         {
-            _logger = logger;
-            _context = context;
+            _service = service;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromQuery]bool includePalestrante = false)
         {
-            return Ok(_context.Eventos);
+            return CustomResponse<Evento[]>(await _service.GetAllEventosAsync(includePalestrante));
+        }
+
+        [HttpGet("{tema}/tema")]
+        public async Task<IActionResult> Get([FromRoute] string tema, [FromQuery] bool includePalestrante = false)
+        {
+            return CustomResponse<Evento[]>(await _service.GetAllEventosByTemaAsync(tema, includePalestrante));
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get([FromRoute] int id, [FromQuery] bool includePalestrante = false)
         {
-            return Ok(_context.Eventos.Where(x => x.Id == id));
+            return CustomResponse<Evento>(await _service.GetEventoByIdAsync(id, includePalestrante));
         }
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id)
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Evento model)
         {
-            return Ok(
-                new 
-                { 
-                    data = _context.Eventos.Where(x => x.Id == id), 
-                    sucesso = true
-                });
+            return CustomResponse<Evento>(await _service.Update(id, model));
         }
         [HttpPost()]
-        public IActionResult Post(Evento model)
+        public async Task<IActionResult> Post([FromBody] Evento model)
         {
-            _context.Eventos.Add(model);
-            _context.SaveChanges();
-
-            return Ok(
-                new 
-                { 
-                    data = model, 
-                    sucesso = true
-                });
+            return CustomResponse<Evento>(await _service.Add(model));
         }
     }
 }

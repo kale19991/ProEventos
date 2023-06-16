@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +26,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(pe => pe.Palestrante);
             }
 
-            return await query.ToArrayAsync();
+            return await query.AsNoTracking().ToArrayAsync();
         }
 
         public async Task<Evento[]> GetAllEventsByTemaAsync(string tema, bool includePalestrantes = false)
@@ -46,7 +44,7 @@ namespace ProEventos.Persistence
 
             query = query.Where(e => e.Tema.ToLower().Contains(tema.ToLower()));
 
-            return await query.ToArrayAsync();
+            return await query.AsNoTracking().ToArrayAsync();
         }
 
         public async Task<Evento> GetEventsByIdAsync(int id, bool includePalestrantes = false)
@@ -62,7 +60,7 @@ namespace ProEventos.Persistence
                     .ThenInclude(pe => pe.Palestrante);
             }
 
-            return await query.FirstOrDefaultAsync(x => x.Id == id);
+            return await query.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }
