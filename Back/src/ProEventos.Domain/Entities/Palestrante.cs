@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Domain.Entities
 {
-    public class Palestrante
+    public class Palestrante : Entity<int>
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string MiniCurriculo { get; set; }
         public string ImageUrl { get; set; }

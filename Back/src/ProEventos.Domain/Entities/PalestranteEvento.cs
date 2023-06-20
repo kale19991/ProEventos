@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Domain.Entities
 {
-    public class PalestranteEvento
+    public class PalestranteEvento : Entity<int>
     {
         public int PalestranteId { get; set; }
         public Palestrante Palestrante { get; set; }

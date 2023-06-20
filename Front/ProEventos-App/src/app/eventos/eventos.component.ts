@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Evento } from '../models/Evento';
+import { Result } from '../helps/response';
 
 
 @Component({
@@ -8,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./eventos.component.scss']
 })
 export class EventosComponent implements OnInit {
-  public eventos: any = [];
-  public eventosFiltrado: any = [];
+  public eventos: Evento[] = [];
+  public eventosFiltrado: Evento[] = [];
   public larguraImagem: number = 150;
   public margemImagem: number = 2;
   public mostraImagem: boolean = true;
@@ -44,10 +46,10 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos(): void {
-    this.http.get('https://localhost:5001/api/evento').subscribe(
+    this.http.get<Result<Evento[]>>('https://localhost:5001/api/evento').subscribe(
       response => {
-        this.eventos = response
-        this.eventosFiltrado = response;
+        this.eventos = response.data
+        this.eventosFiltrado = response.data;
       },
       error => console.log(error)
     );

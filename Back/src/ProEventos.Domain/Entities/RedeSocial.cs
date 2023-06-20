@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Domain.Entities
 {
-    public class RedeSocial
+    public class RedeSocial : Entity<int>
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string URL { get; set; }
         public int? EventoId { get; set; }

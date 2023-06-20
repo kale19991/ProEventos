@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Domain.Entities
 {
-    public class Evento
+    public class Evento : Entity<int>
     {
-        public int Id { get; set; }
         public string Local { get; set; }
         public DateTime? DataEvento { get; set; }
         public string Tema { get; set; }

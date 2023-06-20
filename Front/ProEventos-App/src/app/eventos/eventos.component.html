@@ -23,7 +23,6 @@
       <th>Local</th>
       <th>Data</th>
       <th>Qtd Pessoas</th>
-      <th>Lote</th>
       <th>Opções</th>
     </tr>
   </thead>
@@ -35,12 +34,11 @@
         [style.width.px]="larguraImagem"
         [style.margin.px]="margemImagem">
       </td>
-      <td>{{evento.eventoId}}</td>
+      <td>{{evento.id}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
       <td>{{evento.dataEvento}}</td>
       <td>{{evento.qtdPessoas}}</td>
-      <td>{{evento.lote}}</td>
       <td>
         <div class="d-grid gap-2 d-md-block">
           <button class="btn btn-primary me-md-2" type="button">Editar</button>

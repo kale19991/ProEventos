@@ -7,18 +7,19 @@ using ProEventos.Application.Interfaces;
 using ProEventos.Persistence.Interfaces;
 using FluentValidation;
 using ProEventos.Domain;
+using ProEventos.Domain.Entities;
 
 namespace ProEventos.Application
 {
     public class Service<TEntity, TKey> : IService<TEntity, TKey> 
-    where TEntity : class
+    where TEntity : Entity<TKey>
     where TKey : IComparable
     {
 
         protected readonly ILogger<TEntity> _logger;
-        protected readonly IPersistence<TEntity> _persistence;
+        protected readonly IPersistence<TEntity, TKey> _persistence;
         protected readonly IValidator<TEntity> _validator;
-        public Service(IPersistence<TEntity> persistence, IValidator<TEntity> validator, ILogger<TEntity> logger)
+        public Service(IPersistence<TEntity, TKey> persistence, IValidator<TEntity> validator, ILogger<TEntity> logger)
         {
             _persistence = persistence;
             _validator = validator;
@@ -48,6 +49,7 @@ namespace ProEventos.Application
         {
             try
             {
+                entity.Id = id;
                 throw new NotImplementedException();
             }
             catch (Exception ex)

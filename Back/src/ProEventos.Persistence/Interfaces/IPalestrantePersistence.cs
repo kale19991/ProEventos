@@ -6,7 +6,7 @@ using ProEventos.Domain.Entities;
 
 namespace ProEventos.Persistence.Interfaces
 {
-    public interface IPalestrantePersistence : IPersistence<Palestrante>
+    public interface IPalestrantePersistence : IPersistence<Palestrante, int>
     {
         Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos = false);
         Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false);

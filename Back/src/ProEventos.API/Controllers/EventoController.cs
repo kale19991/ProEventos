@@ -7,6 +7,7 @@ using System.Linq;
 using ProEventos.Persistence;
 using ProEventos.Domain.Entities;
 using ProEventos.Application.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace ProEventos.API.Controllers
 {
@@ -20,6 +21,10 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet()]
+        [ProducesResponseType(typeof(Evento[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get([FromQuery]bool includePalestrante = false)
         {
             return CustomResponse<Evento[]>(await _service.GetAllEventosAsync(includePalestrante));
@@ -42,6 +47,7 @@ namespace ProEventos.API.Controllers
             return CustomResponse<Evento>(await _service.Update(id, model));
         }
         [HttpPost()]
+
         public async Task<IActionResult> Post([FromBody] Evento model)
         {
             return CustomResponse<Evento>(await _service.Add(model));

@@ -7,7 +7,7 @@ using ProEventos.Persistence.Interfaces;
 
 namespace ProEventos.Persistence
 {
-    public class PalestrantePersistence : Persistence<Palestrante>, IPalestrantePersistence
+    public class PalestrantePersistence : Persistence<Palestrante, int>, IPalestrantePersistence
     {
         public PalestrantePersistence(DataContext context) : base(context)
         {

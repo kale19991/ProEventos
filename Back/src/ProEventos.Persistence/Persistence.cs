@@ -1,10 +1,14 @@
 using System.Threading.Tasks;
 using ProEventos.Persistence.Contexts;
 using ProEventos.Persistence.Interfaces;
+using ProEventos.Domain.Entities;
+using System;
 
 namespace ProEventos.Persistence
 {
-    public class Persistence<TEntity> : IPersistence<TEntity> where TEntity : class
+    public class Persistence<TEntity, TKey> : IPersistence<TEntity, TKey> 
+    where TEntity  : Entity<TKey>
+    where TKey : IComparable
     {
         protected readonly DataContext _context;
         public Persistence(DataContext context)

@@ -24,7 +24,7 @@ namespace ProEventos.Application
             {
                 var validator = _validator.Validate(entity);
                 if (!validator.IsValid)
-                    return BaseResult<Evento>.BuildFail(validator, "validação!");
+                    return BaseResult<Evento>.BuildFail(validator, "validaÃ§Ã£o!");
 
                 entity.Id = id;
                 _persistence.Update(entity);
@@ -43,7 +43,7 @@ namespace ProEventos.Application
             {
                 var model = await _eventoPersistence.GetEventsByIdAsync(id);
                 if (model == null)
-                    return BaseResult<Evento>.BuildFail("Objeto não encontrado!");
+                    return BaseResult<Evento>.BuildFail("Objeto nï¿½o encontrado!");
 
                 _persistence.Delete(model);
 

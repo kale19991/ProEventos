@@ -7,7 +7,7 @@ using ProEventos.Persistence.Interfaces;
 
 namespace ProEventos.Persistence
 {
-    public class EventoPersistence : Persistence<Evento>, IEventoPersistence
+    public class EventoPersistence : Persistence<Evento, int>, IEventoPersistence
     {
         public EventoPersistence(DataContext context) : base(context)
         {
