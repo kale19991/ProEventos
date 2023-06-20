@@ -1,28 +1,30 @@
 <h2>Eventos</h2>
 <hr>
 <div class="form-inline">
-
-  <div class="col-md-6">
-    <h5 class="">Filtro: </h5>
-    <div class="form-group mb-2">
-      <input
-      type="text"
-      class="form-control"
-      placeholder="Buscar eventos"
-      [(ngModel)]="filtroLista">
-    </div>
+  <div class="form-group mb-2">
+    <input
+    type="text"
+    class="input form-control mb-2"
+    placeholder="buscar"
+    [(ngModel)]="filtroLista"
+    />
+    <button class="btn btn-outline-success">Buscar</button>
   </div>
-
 </div>
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-      <th><button class="btn btn-outline-light btn-sm" (click)="mostrarImg()">{{mostraImagem ? 'Ocultar': 'Exibir'}}</button></th>
+      <th><button
+        class="btn btn-outline-light btn-sm"
+        (click)="mostrarImg()">
+        <i class="{{mostraImagem ? 'fa fa-eye': 'fa fa-eye-slash'}}"></i>
+        {{mostraImagem ? 'Ocultar': 'Exibir'}}</button></th>
       <th>#</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
       <th>Qtd Pessoas</th>
+      <th>Lote</th>
       <th>Opções</th>
     </tr>
   </thead>
@@ -37,12 +39,17 @@
       <td>{{evento.id}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
-      <td>{{evento.dataEvento}}</td>
+      <td>{{evento.dataEvento | DateFormatPipe}}</td>
       <td>{{evento.qtdPessoas}}</td>
+      <td>{{evento.lotes[0].nome}}</td>
       <td>
         <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-primary me-md-2" type="button">Editar</button>
-          <button class="btn btn-danger" type="button">Excluir</button>
+          <button class="btn btn-primary me-md-2" type="button">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="btn btn-danger" type="button">
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
       </td>
     </tr>

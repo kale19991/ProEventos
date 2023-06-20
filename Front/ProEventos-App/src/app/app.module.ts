@@ -11,13 +11,15 @@ import { EventosComponent } from './eventos/eventos.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventoService } from './services/evento.service';
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventosComponent,
     PalestrantesComponent,
-    NavBarComponent
+    NavBarComponent,
+    DateTimeFormatPipe
   ],
   imports: [
     BrowserModule,

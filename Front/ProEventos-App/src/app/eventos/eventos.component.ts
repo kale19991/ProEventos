@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../models/Evento';
-import { Result } from '../helps/response';
+import { Result } from '../helpers/response';
 import { EventoService } from '../services/evento.service';
 
 
