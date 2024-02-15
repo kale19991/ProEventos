@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "ProEventos.sln"
+    "dotnet.defaultSolution": "ProEventos.sln",
+    "dotnet.completion.showNameCompletionSuggestions": "true"
 }
