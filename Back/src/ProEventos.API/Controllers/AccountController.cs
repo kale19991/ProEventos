@@ -63,7 +63,7 @@ namespace ProEventos.API.Controllers
                     return Ok(new
                     {
                         userName = user.UserName,
-                        imageUrl = use.ImagemURL,
+                        imageUrl = user.ImagemURL,
                         PrimeroNome = user.PrimeiroNome,
                         token = _tokenService.CreateToken(user).Result
                     });
@@ -92,7 +92,7 @@ namespace ProEventos.API.Controllers
                 return Ok(new
                 {
                     userName = user.UserName,
-                    imageUrl = use.ImagemURL,
+                    imageUrl = user.ImagemURL,
                     PrimeroNome = user.PrimeiroNome,
                     token = _tokenService.CreateToken(user).Result
                 });
@@ -121,7 +121,7 @@ namespace ProEventos.API.Controllers
                 return Ok(new
                 {
                     userName = userReturn.UserName,
-                    imageUrl = use.ImagemURL,
+                    imageUrl = user.ImagemURL,
                     PrimeroNome = userReturn.PrimeiroNome,
                     token = _tokenService.CreateToken(userReturn).Result
                 });

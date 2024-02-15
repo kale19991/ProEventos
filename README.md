@@ -1,6 +1,6 @@
 ### ProEventos - Curso da Udemy
 
-# Seja Full-Stack com .NET Web API e Angular + EF Core - V2.0 - [Course](http://www.udemy.com/course/angular-dotnetcore-efcore/?referralCode=F44264DF39DEEE45EC50).
+# Seja Full-Stack com .NET Web API e Angular + EF Core
 
 This is all of the files for our Course about Angular, WebAPI and More
 
@@ -38,28 +38,14 @@ If you want to see this link course, really in action [original site](https://ww
 ## User Settings
 
 ```
-# Site settings
-title: Vinícius de Andrade - Professor and Full-stack Developer
-description: A Course about [Angular, .NET Core and EF Core]
-baseurl: "" # the subpath of your site, e.g. /blog/ or empty.
+Comandos uteis
 
-# User settings
-There're not settings exactly, only files to guide you understand a little bit more about Angular, WebAPI and More
+dotnet tool install --global dotnet-ef --version 5.0.0
+
+dotnet ef migrations add init -p Back/src/ProEventos.Persistence/ -s Back/src/ProEventos.API/
+
+dotnet ef database update -p Back/src/ProEventos.Persistence/ -s Back/src/ProEventos.API/
+
+cd Front && npm install -- para usar json-server
+cd Front/ProEventos-App && npm install && npm start
 ```
-
-## Questions
-
-Having a problem getting something to work or want to know why I setup something in a certain way? Ping me on Twitter [@programadament](https://twitter.com/programadament) or Message on [Facebook](http://facebook.com/ozirispc)
-
-
-## Donation
-
-If you liked my work, [subscribe on youtube](https://www.youtube.com/user/ozirispc?sub_confirmation=1)
-Or buy the course using [this link](http://www.udemy.com/course/angular-dotnetcore-efcore/?referralCode=F44264DF39DEEE45EC50).
-
-## License
-
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this files on your site without linking back to me or using a disclaimer.
-
-If you’d like to give me credit somewhere on your blog or tweet a shout out to [@ozirispc](https://twitter.com/ozirispc), that would be pretty sweet.
-
